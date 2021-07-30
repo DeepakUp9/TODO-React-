@@ -6,9 +6,10 @@ import TodosList from "./components/TodosList/TodosList.jsx";
 class  App extends Component {
   state = { 
     todos :[
-      {id:"1",todo:"learn jsx"},
-      {id:"2", todo:"learn css"},
-      {id: "3",todo:"learn htims"},
+      {id:"1",todo:"Learn jsx"},
+      {id:"2", todo:"Learn css"},
+      {id: "3",todo:"Learn html"},
+      {id: "3",todo:"Learn react js"},
 
     ],
    };
@@ -24,16 +25,23 @@ deleteTOdo= (id) =>{
   this.setState({
     todos:updateTodos
   })
-}
+};
 
+addTodo=(todo)=>{
+  let updateTodos =[...this.state.todos , {id:this.state.todos.length+1 , todo :todo},];
 
+  this.setState({
+    todos:updateTodos
+  })
+};
 
   render() { 
     let todos=this.state.todos;
     let deleteTodo =this.deleteTOdo;
+    let addTodo= this.addTodo;
     return (
       <div className="App">
-     <Inputbox></Inputbox>
+     <Inputbox addTodo={ addTodo }></Inputbox>
      <TodosList todos= {todos} deleteTodo ={deleteTodo} ></TodosList>
         </div>
     );
