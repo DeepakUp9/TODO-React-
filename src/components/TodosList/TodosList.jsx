@@ -4,9 +4,27 @@
 import React, { Component } from 'react';
 
 class  TodosList extends Component {
-    state = {  }
+    state = {  };
+
     render() { 
-        return ( <h1>Hello from TODOList</h1> );
+        let todos =this.props.todos;
+        let deleteTodo =this.props.deleteTodo;
+
+
+        return ( 
+            <div className="todos container">
+               
+               {todos.map( function (todosObj){
+                   return (
+                       <div key={todosObj.id} className="todo input-group m-4">
+                        <div className="form-control">{todosObj.todo}</div>
+                        <button className="btn btn-danger" onClick={(e)=> {deleteTodo(todosObj.id);} }>Delete</button>
+                        </div>
+                   );
+               })}
+
+            </div>
+        );
     }
 }
  
